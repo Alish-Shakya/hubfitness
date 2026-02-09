@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@keyframes float1 {
+  0% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-80px) translateX(40px) scale(1.2);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+}
+
+@keyframes float2 {
+  0% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+  50% {
+    transform: translateY(60px) translateX(-60px) scale(1.3);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+}
+
+@keyframes float3 {
+  0% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(-50px) scale(1.4);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.4;
+  }
+}
+
+/* lime glow blobs */
+.bg-blob1 {
+  animation: float1 18s ease-in-out infinite;
+}
+.bg-blob2 {
+  animation: float2 22s ease-in-out infinite;
+}
+.bg-blob3 {
+  animation: float3 14s ease-in-out infinite;
+}
+
+/* Global Theme Colors */
+:root {
+  --color-bg: #050505;
+  --color-primary: #a3e635; /* lime-400 */
+  --color-secondary: #ffffff;
+  --color-muted: rgba(255, 255, 255, 0.4);
+  --color-dark: #000000;
+}
