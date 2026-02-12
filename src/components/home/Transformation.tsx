@@ -46,12 +46,23 @@ export default function Testimonials() {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className=" mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-black uppercase mb-4">
-            Client <span className="text-lime-400">Testimonials</span>
-          </h2>
-          <div className="w-24 h-1 bg-lime-400 mx-auto"></div>
+          <div>
+            <h2 className="text-lime-400 font-black tracking-[0.3em] text-xs mb-3 uppercase">
+              Voices Of Strength
+            </h2>
+
+            <h3 className="text-5xl md:text-6xl font-black uppercase italic leading-none text-white">
+              CLIENT{" "}
+              <span
+                className="text-transparent"
+                style={{ WebkitTextStroke: "1px white" }}
+              >
+                STORIES
+              </span>
+            </h3>
+          </div>
         </motion.div>
 
         {/* Content */}

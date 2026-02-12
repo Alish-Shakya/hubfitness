@@ -39,9 +39,25 @@ export default function MeetTheTeam() {
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-5xl font-black uppercase text-center mb-16"
+          className="text-5xl font-black uppercase mb-16"
         >
-          Meet The <span className="text-lime-400">Team</span>
+          <div>
+            {/* small top label */}
+            <h2 className="text-lime-400 font-black tracking-[0.3em] text-xs mb-3 uppercase">
+              The People Behind Hub
+            </h2>
+
+            {/* main heading */}
+            <h3 className="text-5xl md:text-6xl font-black uppercase italic leading-none text-white">
+              MEET THE{" "}
+              <span
+                className="text-transparent"
+                style={{ WebkitTextStroke: "1px white" }}
+              >
+                TEAM
+              </span>
+            </h3>
+          </div>
         </motion.h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

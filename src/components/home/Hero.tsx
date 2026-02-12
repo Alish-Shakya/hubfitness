@@ -25,7 +25,7 @@ export default function Hero() {
     <div className="bg-[#050505] h-screen text-white font-sans relative selection:bg-lime-400 selection:text-black">
       {/* 🟢 DYNAMIC MOUSE GLOW */}
       <motion.div
-        className="absolute top-0 left-0 w-[600px] h-[600px] bg-lime-400/10 rounded-full blur-[120px] pointer-events-none z-30"
+        className="absolute top-0 left-0 w-[400px] h-[400px] bg-lime-400/10 rounded-full blur-[120px] pointer-events-none z-30"
         style={{
           x: smoothX,
           y: smoothY,
@@ -51,7 +51,7 @@ export default function Hero() {
       <section className="relative flex flex-1 items-center justify-center z-10 h-full">
         <div className="relative w-full max-w-[1400px] flex items-center justify-center">
           {/* CENTER IMAGE */}
-          <motion.div 
+          <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1 }}
@@ -68,8 +68,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* TEXT OVER IMAGE */}
-          <div className="absolute flex items-center justify-center gap-40 text-center pointer-events-none z-20 -translate">
+          <div className="absolute flex items-center justify-center gap-30 text-center pointer-events-none z-20 -translate">
             {/* LEFT TEXT */}
             <motion.div
               initial={{ x: -60, opacity: 0 }}
@@ -80,7 +79,7 @@ export default function Hero() {
               <div className="relative flex flex-col items-center">
                 {/* UNITED */}
                 <h1
-                  className="text-7xl font-black uppercase tracking-tighter text-transparent"
+                  className="text-8xl font-extrabold uppercase tracking-tighter text-transparent"
                   style={{
                     WebkitTextStroke: "1px rgba(255,255,255,0.5)",
                   }}
@@ -91,7 +90,7 @@ export default function Hero() {
                 {/* WRAPPER FOR BY + IMAGE */}
                 <div className="relative mt-2">
                   {/* BY (FLOATING BETWEEN) */}
-                  <span className="absolute left-1/2 -translate-x-1/2 -top-3 text-[26px] font-black tracking-[0.4em] text-white/40 uppercase z-20">
+                  <span className="text-2xl absolute left-1/2 -translate-x-1/2 -top-3 text-[26px] font-black tracking-[0.4em] text-white/40 uppercase z-20">
                     By
                   </span>
 
@@ -101,7 +100,7 @@ export default function Hero() {
                     alt="Strength"
                     width={220}
                     height={120}
-                    className="object-contain -mt-13 -rotate-25"
+                    className="text-5xl object-contain -mt-13 -rotate-25"
                   />
                 </div>
               </div>
@@ -115,30 +114,28 @@ export default function Hero() {
               className="leading-none"
             >
               <div className="relative flex flex-col items-center">
-                {/* UNITED */}
                 <h1
-                  className="text-7xl font-black uppercase tracking-tighter text-transparent"
+                  className="text-8xl font-extrabold uppercase tracking-tighter text-transparent"
                   style={{
                     WebkitTextStroke: "1px rgba(255,255,255,0.5)",
                   }}
                 >
-                  powered
+                  Powered
                 </h1>
 
                 {/* WRAPPER FOR BY + IMAGE */}
                 <div className="relative mt-2">
                   {/* BY (FLOATING BETWEEN) */}
-                  <span className="absolute left-1/2 -translate-x-1/2 -top-3 text-[26px] font-black tracking-[0.4em] text-white/40 uppercase z-20">
+                  <span className="text-2xl absolute left-1/2 -translate-x-1/2 -top-3 text-[26px] font-black tracking-[0.4em] text-white/40 uppercase z-20">
                     By
                   </span>
 
-                  {/* STRENGTH */}
                   <Image
                     src="/community2.png"
                     alt="community"
                     width={220}
                     height={120}
-                    className="object-contain -mt-13 rotate-25"
+                    className="text-5xl object-contain -mt-13 rotate-25"
                   />
                 </div>
               </div>
@@ -150,7 +147,7 @@ export default function Hero() {
       {/* 🔘 CALL TO ACTION FOOTER */}
       <div className="absolute bottom-10 left-0 w-full px-10 lg:px-20 flex flex-col md:flex-row items-end justify-between z-40">
         <div className="max-w-md">
-          <p className=" leading-relaxed mb-6 border-l-2 border-lime-400 pl-4">
+          <p className=" leading-relaxed mb-6 border-l-2 border-lime-400 pl-4 text-xl font-semi-bold">
             Designed to optimize your fitness, recovery, performance, and
             connection. Hub Fitness delivers unmatched value for elite members.
           </p>
@@ -158,7 +155,7 @@ export default function Hero() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-lime-400 text-black font-black py-4 px-12 rounded-sm text-sm tracking-widest hover:shadow-[0_0_40px_rgba(163,230,53,0.5)] transition-all"
+              className="bg-lime-400 text-black font-black py-4 px-12 rounded-sm text-sm tracking-widest cursor-pointer transition-all"
             >
               JOIN NOW
             </motion.button>

@@ -53,17 +53,17 @@ export default function GallerySection() {
           {/* Horizontal Image */}
           <motion.div className="md:col-span-2 relative overflow-hidden rounded-xl border border-white/5">
             <Image
-              src="/gym-photo-1.jpg"
+              src="/gallery/gallery3.jpg"
               alt="Heavy Lifting"
               fill
-              className="object-cover max-h-full grayscale group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
+              className="object-cover max-h-full group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
             />
           </motion.div>
 
           {/* Small Square Image */}
           <motion.div className="relative overflow-hidden rounded-xl border border-white/5">
             <Image
-              src="/gym-photo-2.jpg"
+              src="/gallery/gallery2.jpg"
               alt="Detail"
               fill
               className="object-cover max-h-full opacity-60 group-hover:opacity-100 transition-opacity"

@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function OurStory() {
   return (
-    <section className="py-20 px-6 bg-[#050505] text-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative py-28 md:py-36 bg-[#050505] text-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <motion.div
@@ -15,9 +15,24 @@ export default function OurStory() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-5xl font-black uppercase mb-6">
-              Our <span className="text-lime-400">Story</span>
-            </h2>
+            <div>
+              {/* small top label */}
+              <h2 className="text-lime-400 font-black tracking-[0.3em] text-xs mb-3 uppercase">
+                Who We Are
+              </h2>
+
+              {/* main heading */}
+              <h3 className="text-5xl md:text-6xl font-black uppercase italic leading-none text-white mb-3">
+                OUR{" "}
+                <span
+                  className="text-transparent"
+                  style={{ WebkitTextStroke: "1px white" }}
+                >
+                  STORY
+                </span>
+              </h3>
+            </div>
+
             <p className="text-gray-300 text-lg leading-relaxed mb-4">
               Founded in 2015, HUB FITNESS began with a simple vision: to create
               a space where fitness meets community. What started as a small

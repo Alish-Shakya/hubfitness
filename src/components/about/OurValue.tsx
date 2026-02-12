@@ -31,16 +31,30 @@ const values = [
 
 export default function OurValues() {
   return (
-    <section className="py-20 px-6 bg-black text-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative py-28 md:py-36 bg-[#050505] text-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
         <motion.h2
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-5xl font-black uppercase text-center mb-16"
+          className="text-5xl font-black uppercase mb-16"
         >
-          Our <span className="text-lime-400">Values</span>
+          <div>
+            <h2 className="text-lime-400 font-black tracking-[0.3em] text-xs mb-3 uppercase">
+              What Drives Us
+            </h2>
+
+            <h3 className="text-5xl md:text-6xl font-black uppercase italic leading-none text-white">
+              OUR{" "}
+              <span
+                className="text-transparent"
+                style={{ WebkitTextStroke: "1px white" }}
+              >
+                VALUES
+              </span>
+            </h3>
+          </div>
         </motion.h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">

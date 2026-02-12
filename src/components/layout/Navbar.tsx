@@ -3,54 +3,55 @@
 import { navLinks } from "@/components/data/navLinks";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
-  // Split links for left & right
-  const middleIndex = Math.ceil(navLinks.length / 2);
-  const leftLinks = navLinks.slice(0, middleIndex);
-  const rightLinks = navLinks.slice(middleIndex);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="absolute top-0 left-0 w-full flex justify-center items-center px-6 py-8 z-50">
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-500 ${
+        scrolled ? "bg-black/90 backdrop-blur-md" : "bg-transparent"
+      }`}
+    >
       <motion.div
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6 }}
-        className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-full px-10 py-4 flex items-center justify-between w-full max-w-5xl"
+        className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto"
       >
-        <div className="hidden lg:flex items-center w-full justify-between text-[10px] uppercase tracking-[0.2em] font-bold">
-          {/* LEFT LINKS */}
-          <div className="flex items-center gap-10">
-            {leftLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-gray-400 hover:text-lime-400 transition"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+        {/* LOGO */}
+        <Link
+          href="/"
+          className="text-4xl text-white italic tracking-tighter hover:cursor-pointer"
+        >
+          HUB<span className="text-lime-400">FITNESS</span>
+        </Link>
 
-          {/* LOGO */}
-          <Link href="/" className="mx-6">
-            <h1 className="text-2xl text-white italic tracking-tighter whitespace-nowrap hover:cursor-pointer">
-              HUB<span className="text-lime-400">FITNESS</span>
-            </h1>
-          </Link>
-
-          {/* RIGHT LINKS */}
-          <div className="flex items-center gap-10">
-            {rightLinks.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                className="text-gray-400 hover:text-lime-400 transition"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+        {/* LINKS */}
+        <div className="hidden lg:flex items-center gap-8 text-[12px] uppercase tracking-[0.2em] font-bold text-white">
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className="hover:text-lime-400 transition"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
       </motion.div>
     </nav>

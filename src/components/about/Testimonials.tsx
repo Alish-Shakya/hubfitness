@@ -28,49 +28,91 @@ const testimonials = [
       "I've tried other gyms, but nothing compares to HUB FITNESS. The energy, the people, the results—it's unmatched.",
     rating: 5,
   },
+  {
+    name: "Sarah Jenkins",
+    role: "Member since 2021",
+    image: "/placeholder.svg",
+    quote:
+      "The personalized programming helped me hit my PRs in record time. Truly elite coaching staff.",
+    rating: 5,
+  },
+  {
+    name: "David Park",
+    role: "Member since 2022",
+    image: "/placeholder.svg",
+    quote:
+      "Clean, professional, and intense. Exactly what I was looking for in a high-performance strength gym.",
+    rating: 5,
+  },
 ];
+
+// Double the array for the seamless loop
+const duplicatedTestimonials = [...testimonials, ...testimonials];
 
 export default function Testimonials() {
   return (
-    <section className="py-20 px-6 bg-[#050505] text-white">
-      <div className="max-w-7xl mx-auto">
-        <motion.h2
-          initial={{ y: 50, opacity: 0 }}
+    <section className="py-24 bg-[#050505] text-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 mb-16">
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-5xl font-black uppercase text-center mb-16"
         >
-          What Our <span className="text-lime-400">Members</span> Say
-        </motion.h2>
+          <h2 className="text-lime-400 font-black tracking-[0.3em] text-xs mb-3 uppercase">
+            Strength In Numbers
+          </h2>
+          <h3 className="text-5xl md:text-7xl font-black uppercase italic leading-none text-white">
+            MEMBERS{" "}
+            <span
+              className="text-transparent"
+              style={{ WebkitTextStroke: "1px white" }}
+            >
+              STORIES
+            </span>
+          </h3>
+        </motion.div>
+      </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.name}
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8 hover:border-lime-400/50 transition-all"
+      {/* UX FIX: The "mask-image" creates a fade effect on the left and right 
+          so cards don't "blink" or pop in/out harshly.
+      */}
+      <div className="relative flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+        <motion.div
+          className="flex gap-6 flex-nowrap"
+          animate={{
+            x: ["0%", "-50%"],
+          }}
+          transition={{
+            duration: 30,
+            ease: "linear",
+            repeat: Infinity,
+          }}
+          // UX IMPROVEMENT: Pause on hover
+          whileHover={{ animationPlayState: "paused" }}
+        >
+          {duplicatedTestimonials.map((testimonial, index) => (
+            <div
+              key={index}
+              className="w-[350px] md:w-[450px] flex-shrink-0 bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md border border-white/10 rounded-2xl p-8 hover:border-lime-400/50 transition-colors duration-500 group"
             >
               {/* Stars */}
-              <div className="flex gap-1 mb-4">
+              <div className="flex gap-1 mb-6">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <span key={i} className="text-lime-400 text-xl">
+                  <span key={i} className="text-lime-400 text-lg">
                     ★
                   </span>
                 ))}
               </div>
 
               {/* Quote */}
-              <p className="text-gray-300 leading-relaxed mb-6 italic">
+              <p className="text-gray-200 text-lg leading-relaxed mb-8 italic font-medium">
                 "{testimonial.quote}"
               </p>
 
               {/* Author */}
-              <div className="flex items-center gap-4">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden">
+              <div className="flex items-center gap-4 border-t border-white/5 pt-6">
+                <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-lime-400/50 transition-colors">
                   <Image
                     src={testimonial.image}
                     alt={testimonial.name}
@@ -79,15 +121,17 @@ export default function Testimonials() {
                   />
                 </div>
                 <div>
-                  <p className="font-black uppercase">{testimonial.name}</p>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider">
+                  <p className="font-bold text-white uppercase tracking-tight">
+                    {testimonial.name}
+                  </p>
+                  <p className="text-xs text-lime-400/70 uppercase font-black tracking-widest">
                     {testimonial.role}
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

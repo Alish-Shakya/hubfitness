@@ -1,23 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-
   theme: {
     extend: {
       colors: {
-        /* Brand System */
-        primary: "rgb(var(--color-primary) / <alpha-value>)",
-        secondary: "rgb(var(--color-secondary) / <alpha-value>)",
-        surface: "rgb(var(--color-surface) / <alpha-value>)",
-        muted: "rgb(var(--color-muted) / <alpha-value>)",
-        accent: "rgb(var(--color-accent) / <alpha-value>)",
+        primary: "#FF3B30",
+        "primary-hover": "#FF1F1F",
+        "primary-light": "#FF6F61",
+        secondary: "#FF6F00",
+        "secondary-hover": "#FF8C00",
+        "secondary-light": "#FFA040",
+        accent: "#2979FF",
+        "accent-hover": "#448AFF",
+        "accent-light": "#66B2FF",
+        "bg-main": "#121212",
+        "bg-secondary": "#1E1E1E",
+        "bg-tertiary": "#2C2C2C",
+        "text-primary": "#F5F5F5",
+        "text-secondary": "#B0B0B0",
+        "text-accent": "#FF3B30",
       },
     },
   },
-
-  plugins: [],
 };

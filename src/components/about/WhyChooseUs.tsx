@@ -43,16 +43,30 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <section className="py-20 px-6 bg-[#050505] text-white">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative py-28 md:py-36 bg-[#050505] text-white overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6">
         <motion.h2
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-5xl font-black uppercase text-center mb-16"
+          className="text-5xl font-black uppercase mb-16"
         >
-          Why Choose <span className="text-lime-400">HUB FITNESS</span>
+          <div>
+            <h2 className="text-lime-400 font-black tracking-[0.3em] text-xs mb-3 uppercase">
+              Train Different
+            </h2>
+
+            <h3 className="text-5xl md:text-6xl font-black uppercase italic leading-none text-white">
+              THE HUB{" "}
+              <span
+                className="text-transparent"
+                style={{ WebkitTextStroke: "1px white" }}
+              >
+                ADVANTAGE
+              </span>
+            </h3>
+          </div>
         </motion.h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -65,11 +79,14 @@ export default function WhyChooseUs() {
               viewport={{ once: true }}
               className="relative group"
             >
-              <div className="absolute -left-4 -top-4 text-8xl font-black text-lime-400/10 group-hover:text-lime-400/20 transition-colors">
+              <div
+                className="absolute top-2 left-4 text-7xl font-black text-lime-400/20
+                          group-hover:text-lime-400/20 blur-[0.5px]"
+              >
                 {reason.number}
               </div>
-              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8 h-full hover:border-lime-400/50 transition-all">
-                <h3 className="text-2xl font-black uppercase mb-4 group-hover:text-lime-400 transition-colors">
+              <div className="relative bg-white/5 border border-white/10 rounded-xl p-8 h-full hover:border-lime-400/50 transition-all">
+                <h3 className="text-2xl font-black uppercase mb-4">
                   {reason.title}
                 </h3>
                 <p className="text-gray-400 leading-relaxed">

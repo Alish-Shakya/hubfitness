@@ -5,7 +5,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-black text-white border-t border-gray-800">
+    <footer className="bg-gradient-to-b from-[#050505] to-black text-white border-t border-gray-800">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -250,32 +250,6 @@ export default function Footer() {
                 </div>
               </li>
             </ul>
-          </div>
-        </div>
-
-        {/* Newsletter Section */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
-          <div className="max-w-2xl mx-auto text-center">
-            <h4 className="text-white font-bold text-xl mb-2 uppercase">
-              Subscribe to Our Newsletter
-            </h4>
-            <p className="text-gray-400 text-sm mb-6">
-              Get fitness tips, workout routines, and exclusive offers delivered
-              to your inbox.
-            </p>
-            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-full bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-lime-400 transition-colors"
-              />
-              <button
-                type="submit"
-                className="bg-lime-400 text-black font-bold px-8 py-3 rounded-full hover:bg-lime-500 transition-all hover:scale-105"
-              >
-                Subscribe
-              </button>
-            </form>
           </div>
         </div>
       </div>
