@@ -49,7 +49,7 @@ export default function Programs() {
           className="mb-20 md:mb-28"
         >
           {/* small label */}
-          <p className="text-lime-400 font-black tracking-[0.35em] text-xs mb-6 uppercase">
+          <p className="text-[#E41C38] font-black tracking-[0.35em] text-xs mb-6 uppercase">
             Training Categories
           </p>
 
@@ -63,9 +63,6 @@ export default function Programs() {
               PROGRAMS
             </span>
           </h2>
-
-          {/* divider line */}
-          <div className="w-24 h-[2px] bg-lime-400 mt-8"></div>
         </motion.div>
 
         {/* program grid */}
@@ -80,8 +77,8 @@ export default function Programs() {
               whileHover={{ y: -12 }}
               className="group relative"
             >
-              {/* glow */}
-              <div className="absolute inset-0 bg-lime-400/0 group-hover:bg-lime-400/5 blur-2xl transition-all duration-500 rounded-xl"></div>
+              {/* Updated Glow: Changed from lime to [#E41C38] */}
+              <div className="absolute inset-0 bg-[#E41C38]/0 group-hover:bg-[#E41C38]/5 blur-2xl transition-all duration-500 rounded-xl"></div>
 
               {/* image */}
               <div className="relative h-72 rounded-xl overflow-hidden mb-6">
@@ -94,8 +91,8 @@ export default function Programs() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
               </div>
 
-              {/* title */}
-              <h3 className="text-3xl font-black uppercase mb-3 group-hover:text-lime-400 transition-colors">
+              {/* Updated Title: Changed hover color to [#E41C38] */}
+              <h3 className="text-3xl font-black uppercase mb-3 group-hover:text-[#E41C38] transition-colors">
                 {program.title}
               </h3>
 
@@ -108,21 +105,14 @@ export default function Programs() {
               <ul className="space-y-3 mb-8">
                 {program.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-3">
-                    <span className="text-lime-400 text-lg">✓</span>
+                    {/* Updated Checkmark: Changed text color to [#E41C38] */}
+                    <span className="text-[#E41C38] text-lg">✓</span>
                     <span className="text-sm text-gray-300 tracking-wide">
                       {feature}
                     </span>
                   </li>
                 ))}
               </ul>
-
-              {/* button */}
-              <Link
-                href="/programs"
-                className="inline-block border border-white/20 px-6 py-3 rounded-lg text-xs font-bold uppercase tracking-[0.2em] hover:bg-lime-400 hover:text-black hover:border-lime-400 transition-all"
-              >
-                View Program
-              </Link>
             </motion.div>
           ))}
         </div>

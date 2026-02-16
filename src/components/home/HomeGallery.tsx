@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function GallerySection() {
   return (
@@ -9,7 +10,7 @@ export default function GallerySection() {
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
           <div>
-            <h2 className="text-lime-400 font-black tracking-[0.3em] text-xs mb-3 uppercase">
+            <h2 className="text-[#E41C38] font-black tracking-[0.3em] text-xs mb-3 uppercase">
               The Performance Vault
             </h2>
             <h3 className="text-5xl md:text-6xl font-black uppercase italic leading-none text-white">
@@ -22,9 +23,11 @@ export default function GallerySection() {
               </span>
             </h3>
           </div>
-          <button className="px-8 py-3 bg-white/5 border border-white/10 hover:border-lime-400 text-[10px] font-bold tracking-[0.2em] uppercase transition-all rounded-full">
-            Explore All Media
-          </button>
+          <Link href="/features" className="self-end">
+            <button className="px-8 py-3 bg-white/5 border border-white/10 hover:border-[#E41C38] text-[10px] font-bold tracking-[0.2em] uppercase transition-all rounded-full">
+              Explore All Media
+            </button>
+          </Link>
         </div>
 
         {/* Bento Grid */}
@@ -37,11 +40,11 @@ export default function GallerySection() {
               loop
               playsInline
               className="absolute inset-0 w-full h-full object-cover max-h-full opacity-50 group-hover:opacity-80 transition-opacity"
-              src="/your-video-1.mp4"
+              src="/heroVideo/coverVideo.mp4"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
             <div className="absolute bottom-6 left-6 text-white">
-              <span className="text-lime-400 text-[10px] font-black tracking-widest uppercase mb-1 block">
+              <span className="text-[#E41C38] text-[10px] font-black tracking-widest uppercase mb-1 block">
                 Live Action
               </span>
               <h4 className="text-xl font-bold uppercase tracking-tight">
@@ -82,8 +85,9 @@ export default function GallerySection() {
               muted
               loop
               playsInline
-              className="absolute inset-0 w-full h-full object-cover max-h-full opacity-40 group-hover:opacity-70 transition-opacity"
-              src="/cinematic-gym.mp4"
+              // poster="/herovideos/asd.mp4"
+              className="absolute inset-0 w-full h-full object-cover max-h-full opacity-50 group-hover:opacity-80 transition-opacity"
+              src="/heroVideo/asd.mp4"
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-16 h-16 rounded-full border border-white/30 flex items-center justify-center backdrop-blur-xl group-hover:scale-110 transition-transform cursor-pointer">
@@ -92,7 +96,7 @@ export default function GallerySection() {
             </div>
             <div className="absolute bottom-6 left-8 text-white">
               <p className="text-2xl font-black italic tracking-tighter uppercase">
-                Community<span className="text-lime-400 ml-2">Power</span>
+                Community<span className="text-[#E41C38] ml-2">Power</span>
               </p>
             </div>
           </motion.div>

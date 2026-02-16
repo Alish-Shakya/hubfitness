@@ -43,10 +43,22 @@ export default function PricingSection() {
   ];
 
   return (
-    <section className="bg-[#050505] text-white py-20 px-6">
-      <div className="max-w-7xl mx-auto flex flex-col items-center gap-10">
-        <h2 className="text-4xl font-black uppercase mb-12 text-center">
-          Choose Your Plan
+    <section className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto flex flex-col gap-10">
+        {/* small label */}
+        <p className="text-[#E41C38] font-black tracking-[0.35em] text-xs uppercase">
+          Membership Plans
+        </p>
+
+        {/* big heading */}
+        <h2 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase italic leading-[0.9]">
+          JOIN
+          <span
+            className="text-transparent ml-3"
+            style={{ WebkitTextStroke: "1px white" }}
+          >
+            TODAY
+          </span>
         </h2>
 
         <div className="flex flex-col md:flex-row justify-center gap-6">

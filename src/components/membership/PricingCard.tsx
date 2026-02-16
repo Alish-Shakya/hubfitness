@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Check, Sparkles } from "lucide-react";
 
 interface PricingCardProps {
   title: string;
@@ -23,45 +24,107 @@ export default function PricingCard({
 }: PricingCardProps) {
   return (
     <motion.div
-      whileHover={{ scale: 1.05 }}
-      className={`flex flex-col rounded-xl p-8 border border-white/10 min-w-[250px] max-w-[300px] ${
-        highlight ? "bg-lime-400/20 border-lime-400" : "bg-black/40"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -8, scale: 1.02 }}
+      transition={{ duration: 0.3 }}
+      className={`relative flex flex-col rounded-2xl p-8 min-w-[280px] max-w-[320px] backdrop-blur-sm ${
+        highlight
+          ? "bg-gradient-to-br from-[#E41C38]/20 via-black/60 to-black/80 border-2 border-[#E41C38] shadow-[0_0_30px_rgba(228,28,56,0.3)]"
+          : "bg-gradient-to-br from-black/60 to-black/40 border border-white/10 hover:border-[#E41C38]/40"
       }`}
     >
-      {badge && (
-        <span className="text-[10px] uppercase font-bold bg-black/40 px-3 py-1 rounded-full self-start mb-3">
-          {badge}
-        </span>
+      {/* Glow effect for highlighted card */}
+      {highlight && (
+        <div className="absolute inset-0 bg-[#E41C38]/5 rounded-2xl blur-xl -z-10" />
       )}
 
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
+      {/* Badge */}
+      {badge && (
+        <div className="flex items-center gap-1.5 text-[10px] uppercase font-bold bg-[#E41C38] text-white px-3 py-1.5 rounded-full self-start mb-4 shadow-lg">
+          <Sparkles className="w-3 h-3" />
+          {badge}
+        </div>
+      )}
 
-      <div className="flex items-center gap-2 mb-4">
+      {/* Title */}
+      <h3 className="text-2xl font-bold mb-1 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+        {title}
+      </h3>
+
+      {/* Pricing */}
+      <div className="flex items-baseline gap-2 mb-6">
         {oldPrice && (
-          <span className="line-through text-gray-400">${oldPrice}</span>
+          <span className="line-through text-gray-500 text-lg font-medium">
+            ${oldPrice}
+          </span>
         )}
-        <span className="text-3xl font-extrabold">{price}</span>
-        <span className="text-sm text-gray-400">{period}</span>
+        <div className="flex items-baseline">
+          <span
+            className={`text-5xl font-black tracking-tight ${
+              highlight ? "text-[#E41C38]" : "text-white"
+            }`}
+          >
+            {price}
+          </span>
+          <span className="text-gray-400 text-base ml-1">{period}</span>
+        </div>
       </div>
 
-      <div className="mb-6">
-        {features.map((f, i) => (
-          <div key={i} className="flex items-start gap-2 text-sm mb-2">
-            <span className="w-3 h-3 border-2 border-lime-400 rounded-full mt-1" />
-            <p>{f}</p>
-          </div>
+      {/* Divider */}
+      <div
+        className={`h-[2px] w-full mb-6 ${
+          highlight
+            ? "bg-gradient-to-r from-[#E41C38] via-[#E41C38]/50 to-transparent"
+            : "bg-gradient-to-r from-white/20 via-white/10 to-transparent"
+        }`}
+      />
+
+      {/* Features */}
+      <div className="space-y-3 mb-8 flex-grow">
+        {features.map((feature, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: i * 0.1 }}
+            className="flex items-start gap-3 text-sm leading-relaxed"
+          >
+            <div
+              className={`flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center mt-0.5 ${
+                highlight
+                  ? "bg-[#E41C38] shadow-[0_0_10px_rgba(228,28,56,0.5)]"
+                  : "bg-white/10 border border-[#E41C38]/50"
+              }`}
+            >
+              <Check
+                className={`w-3 h-3 ${
+                  highlight ? "text-white" : "text-[#E41C38]"
+                }`}
+              />
+            </div>
+            <p className="text-gray-200">{feature}</p>
+          </motion.div>
         ))}
       </div>
 
-      <button
-        className={`mt-auto py-3 rounded-full font-bold text-sm uppercase tracking-wide ${
+      {/* CTA Button */}
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.98 }}
+        className={`py-4 rounded-xl font-bold text-sm uppercase tracking-wider transition-all duration-300 ${
           highlight
-            ? "bg-black text-white hover:bg-black/80"
-            : "bg-lime-400 text-black hover:bg-lime-300"
+            ? "bg-[#E41C38] text-white shadow-[0_4px_20px_rgba(228,28,56,0.4)] hover:shadow-[0_6px_30px_rgba(228,28,56,0.6)] hover:bg-[#c91830]"
+            : "bg-gradient-to-r from-white to-gray-200 text-black hover:from-[#E41C38] hover:to-[#c91830] hover:text-white shadow-lg"
         }`}
       >
         Get Started
-      </button>
+      </motion.button>
+
+      {/* Corner accent */}
+      {highlight && (
+        <div className="absolute top-0 right-0 w-20 h-20 bg-[#E41C38]/20 rounded-bl-full blur-2xl" />
+      )}
     </motion.div>
   );
 }

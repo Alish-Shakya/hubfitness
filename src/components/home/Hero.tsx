@@ -1,203 +1,209 @@
 "use client";
-import Image from "next/image";
-import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useEffect } from "react";
+
+import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+
+const backgrounds = [
+  {
+    type: "video",
+    src: "/heroVideo/coverVideo.mp4",
+    title: "Unleash Your Inner Beast",
+    subtitle:
+      "State-of-the-art equipment and elite coaching to reach your peak performance.",
+  },
+  {
+    type: "video",
+    src: "/heroVideo/cover2.mp4",
+    title: "Crush Your Goals",
+    subtitle:
+      "From weight loss to muscle gain, we provide the roadmap to your success.",
+  },
+];
+const SLIDE_DURATION = 10;
 
 export default function Hero() {
-  // Mouse tracking for the spotlight glow effect
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+  const [current, setCurrent] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const videoRefs = useRef<Record<number, HTMLVideoElement | null>>({});
 
-  const springConfig = { damping: 25, stiffness: 150 };
-  const smoothX = useSpring(mouseX, springConfig);
-  const smoothY = useSpring(mouseY, springConfig);
-
+  // Play / Pause videos
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
+    const currentVideo = videoRefs.current[current];
+
+    if (currentVideo) {
+      currentVideo.play().catch(() => {});
+
+      Object.keys(videoRefs.current).forEach((key) => {
+        const index = parseInt(key);
+        if (index !== current && videoRefs.current[index]) {
+          videoRefs.current[index]?.pause();
+        }
+      });
+    }
+  }, [current]);
+
+  // Preload next video
+  useEffect(() => {
+    const nextIndex = (current + 1) % backgrounds.length;
+    const nextVideo = videoRefs.current[nextIndex];
+
+    if (nextVideo && !isTransitioning) {
+      nextVideo.load();
+    }
+  }, [current, isTransitioning]);
+
+  // Auto slide
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleNext();
+    }, SLIDE_DURATION * 1000);
+
+    return () => clearTimeout(timer);
+  }, [current]);
+
+  const handleNext = () => {
+    setIsTransitioning(true);
+    setCurrent((prev) => (prev + 1) % backgrounds.length);
+
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 800);
+  };
+
+  const handleSlideClick = (index: number) => {
+    if (index !== current) {
+      setIsTransitioning(true);
+      setCurrent(index);
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 800);
+    }
+  };
+
+  const bg = backgrounds[current];
 
   return (
-    <div className="bg-[#050505] h-screen text-white font-sans relative selection:bg-lime-400 selection:text-black">
-      {/* 🟢 DYNAMIC MOUSE GLOW */}
-      <motion.div
-        className="absolute top-0 left-0 w-[400px] h-[400px] bg-lime-400/10 rounded-full blur-[120px] pointer-events-none z-30"
-        style={{
-          x: smoothX,
-          y: smoothY,
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
-      />
+    <section className="relative h-screen w-full overflow-hidden bg-black">
+      {/* Background Videos */}
+      {backgrounds.map((item, index) => {
+        const isActive = index === current;
 
-      {/* 🖼️ BACKGROUND LAYER (The community image you downloaded) */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/cover.jpg"
-          alt="Community"
-          fill
-          className="object-cover opacity-40 grayscale"
-        />
-        {/* Dark gradients to ensure text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black via-transparent to-black opacity-80" />
-      </div>
-
-      {/* ⚡ HERO SECTION (CENTERED LIKE BEFORE) */}
-      <section className="relative flex flex-1 items-center justify-center z-10 h-full">
-        <div className="relative w-full max-w-[1400px] flex items-center justify-center">
-          {/* CENTER IMAGE */}
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="relative z-10"
+        return (
+          <div
+            key={index}
+            className="absolute inset-0 transition-opacity duration-700 ease-in-out"
+            style={{
+              opacity: isActive ? 1 : 0,
+              zIndex: isActive ? 1 : 0,
+            }}
           >
-            <div className="relative w-[300px] h-[460px] sm:w-[380px] sm:h-[560px] md:w-[460px] md:h-[640px] lg:w-[520px] lg:h-[720px]">
-              <Image
-                src="/svg.png"
-                alt="Main Athlete"
-                fill
-                className="object-contain drop-shadow-[0_0_120px_rgba(163,230,53,0.25)]"
-                priority
-              />
-            </div>
-          </motion.div>
-
-          <div className="absolute flex items-center justify-center gap-30 text-center pointer-events-none z-20 -translate">
-            {/* LEFT TEXT */}
-            <motion.div
-              initial={{ x: -60, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              className="leading-none"
+            <video
+              ref={(el) => {
+                videoRefs.current[index] = el;
+              }}
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="h-full w-full object-contain object-center"
             >
-              <div className="relative flex flex-col items-center">
-                {/* UNITED */}
-                <h1
-                  className="text-8xl font-extrabold uppercase tracking-tighter text-transparent"
-                  style={{
-                    WebkitTextStroke: "1px rgba(255,255,255,0.5)",
-                  }}
+              <source src={item.src} type="video/mp4" />
+            </video>
+          </div>
+        );
+      })}
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent z-10" />
+
+      {/* Content */}
+      <div className="relative z-20 flex h-full items-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{
+                duration: 0.5,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
+              className="max-w-3xl"
+            >
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight">
+                {bg.title.split(" ").map((word, i, arr) => {
+                  const lastIndex = arr.length - 1;
+
+                  return (
+                    <span
+                      key={i}
+                      className={i === lastIndex ? "text-[#E41C38]" : ""}
+                    >
+                      {word}{" "}
+                    </span>
+                  );
+                })}
+              </h1>
+
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-200 mb-10">
+                {bg.subtitle}
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/membership"
+                  className="px-8 py-4 font-bold bg-[#E41C38] text-black rounded-lg font-semibold transition-all duration-300 hover:scale-105 text-center"
                 >
-                  UNITED
-                </h1>
+                  Membership
+                </Link>
 
-                {/* WRAPPER FOR BY + IMAGE */}
-                <div className="relative mt-2">
-                  {/* BY (FLOATING BETWEEN) */}
-                  <span className="text-2xl absolute left-1/2 -translate-x-1/2 -top-3 text-[26px] font-black tracking-[0.4em] text-white/40 uppercase z-20">
-                    By
-                  </span>
-
-                  {/* STRENGTH */}
-                  <Image
-                    src="/str2.png"
-                    alt="Strength"
-                    width={220}
-                    height={120}
-                    className="text-5xl object-contain -mt-13 -rotate-25"
-                  />
-                </div>
+                <Link
+                  href="/contact"
+                  className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg font-semibold hover:bg-white/20 transition-all duration-300 border border-white/20 text-center"
+                >
+                  Contact Us
+                </Link>
               </div>
             </motion.div>
-
-            {/* RIGHT TEXT */}
-            <motion.div
-              initial={{ x: 60, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.8 }}
-              className="leading-none"
-            >
-              <div className="relative flex flex-col items-center">
-                <h1
-                  className="text-8xl font-extrabold uppercase tracking-tighter text-transparent"
-                  style={{
-                    WebkitTextStroke: "1px rgba(255,255,255,0.5)",
-                  }}
-                >
-                  Powered
-                </h1>
-
-                {/* WRAPPER FOR BY + IMAGE */}
-                <div className="relative mt-2">
-                  {/* BY (FLOATING BETWEEN) */}
-                  <span className="text-2xl absolute left-1/2 -translate-x-1/2 -top-3 text-[26px] font-black tracking-[0.4em] text-white/40 uppercase z-20">
-                    By
-                  </span>
-
-                  <Image
-                    src="/community2.png"
-                    alt="community"
-                    width={220}
-                    height={120}
-                    className="text-5xl object-contain -mt-13 rotate-25"
-                  />
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* 🔘 CALL TO ACTION FOOTER */}
-      <div className="absolute bottom-10 left-0 w-full px-10 lg:px-20 flex flex-col md:flex-row items-end justify-between z-40">
-        <div className="max-w-md">
-          <p className=" leading-relaxed mb-6 border-l-2 border-lime-400 pl-4 text-xl font-semi-bold">
-            Designed to optimize your fitness, recovery, performance, and
-            connection. Hub Fitness delivers unmatched value for elite members.
-          </p>
-          <div className="flex items-center gap-6">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-lime-400 text-black font-black py-4 px-12 rounded-sm text-sm tracking-widest cursor-pointer transition-all"
-            >
-              JOIN NOW
-            </motion.button>
-            <div className="flex -space-x-3">
-              {[1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  className="w-10 h-10 rounded-full border-2 border-black bg-gray-800 overflow-hidden"
-                >
-                  <div className="w-full h-full bg-gradient-to-tr from-gray-700 to-gray-500" />
-                </div>
-              ))}
-              <div className="pl-6">
-                <p className="text-xl font-black leading-none">2.4k+</p>
-                <p className="text-[10px] text-gray-500 uppercase tracking-tighter">
-                  Followers
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* SCROLL INDICATOR */}
-        <div className="hidden md:flex flex-col items-center gap-4 relative">
-          {/* Dumbbell Line */}
-          <div className="hidden md:flex flex-col items-center gap-4">
-            {/* Vertical Scroll Text */}
-            <span className="text-[10px] uppercase tracking-[0.3em] text-gray [writing-mode:vertical-lr] rotate-180">
-              Scroll Down
-            </span>
-
-            {/* Dumbbell Line */}
-            <div className="w-px h-20 bg-gradient-to-b from-lime-400 to-transparent relative flex flex-col items-center">
-              {/* Dumbbell Icon */}
-              <div className="w-6 h-3 bg-gray-800 rounded-full flex justify-between items-center px-1">
-                <div className="w-2 h-2 bg-lime-400 rounded-full"></div>
-                <div className="w-2 h-2 bg-lime-400 rounded-full"></div>
-              </div>
-            </div>
-          </div>
+          </AnimatePresence>
         </div>
       </div>
-    </div>
+
+      {/* Progress Bars */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-30 w-full max-w-5xl px-6">
+        <div className="flex gap-3 w-full">
+          {backgrounds.map((_, index) => (
+            <div
+              key={index}
+              onClick={() => handleSlideClick(index)}
+              className="flex-1 h-[3px] md:h-[4px] bg-white/20 rounded-full overflow-hidden cursor-pointer"
+            >
+              {/* Active progress */}
+              {index === current && (
+                <motion.div
+                  className="h-full bg-[#E41C38] "
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{
+                    duration: SLIDE_DURATION,
+                    ease: "linear",
+                  }}
+                />
+              )}
+
+              {/* Completed */}
+              {index < current && (
+                <div className="h-full w-full bg-[#E41C38]" />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom Fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/50 to-transparent z-10" />
+    </section>
   );
 }

@@ -53,7 +53,7 @@ export default function WhyChooseUs() {
           className="text-5xl font-black uppercase mb-16"
         >
           <div>
-            <h2 className="text-lime-400 font-black tracking-[0.3em] text-xs mb-3 uppercase">
+            <h2 className="text-[#E41C38] font-black tracking-[0.3em] text-xs mb-3 uppercase">
               Train Different
             </h2>
 
@@ -80,12 +80,12 @@ export default function WhyChooseUs() {
               className="relative group"
             >
               <div
-                className="absolute top-2 left-4 text-7xl font-black text-lime-400/20
-                          group-hover:text-lime-400/20 blur-[0.5px]"
+                className="absolute top-2 left-4 text-7xl font-black text-[#E41C38]/20
+                          group-hover:text-[#E41C38]/40 blur-[0.5px]"
               >
                 {reason.number}
               </div>
-              <div className="relative bg-white/5 border border-white/10 rounded-xl p-8 h-full hover:border-lime-400/50 transition-all">
+              <div className="relative bg-white/5 border border-white/10 rounded-xl p-8 h-full hover:border-[#E41C38]/50 transition-all">
                 <h3 className="text-2xl font-black uppercase mb-4">
                   {reason.title}
                 </h3>

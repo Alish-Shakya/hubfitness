@@ -14,28 +14,28 @@ export default function ContactForm() {
         <input
           type="text"
           placeholder="Your Name"
-          className="bg-[#222] text-white px-4 py-3 rounded-md border border-white/10 focus:border-lime-400 focus:outline-none transition"
+          className="bg-[#222] text-white px-4 py-3 rounded-md border border-white/10 focus:border-[#E41C38] focus:outline-none transition"
         />
         <input
           type="email"
           placeholder="Email Address"
-          className="bg-[#222] text-white px-4 py-3 rounded-md border border-white/10 focus:border-lime-400 focus:outline-none transition"
+          className="bg-[#222] text-white px-4 py-3 rounded-md border border-white/10 focus:border-[#E41C38] focus:outline-none transition"
         />
         <input
           type="text"
           placeholder="Subject"
-          className="bg-[#222] text-white px-4 py-3 rounded-md border border-white/10 focus:border-lime-400 focus:outline-none transition"
+          className="bg-[#222] text-white px-4 py-3 rounded-md border border-white/10 focus:border-[#E41C38] focus:outline-none transition"
         />
         <textarea
           placeholder="Your Message"
           rows={5}
-          className="bg-[#222] text-white px-4 py-3 rounded-md border border-white/10 focus:border-lime-400 focus:outline-none transition resize-none"
+          className="bg-[#222] text-white px-4 py-3 rounded-md border border-white/10 focus:border-[#E41C38] focus:outline-none transition resize-none"
         ></textarea>
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           type="submit"
-          className="bg-lime-400 text-black font-black py-4 px-8 rounded-md uppercase tracking-widest hover:shadow-[0_0_40px_rgba(163,230,53,0.5)] transition-all"
+          className="bg-[#E41C38] text-black font-black py-4 px-8 rounded-md uppercase tracking-widest hover:shadow-[0_0_40px_rgba(163,230,53,0.5)] transition-all"
         >
           Send Message
         </motion.button>

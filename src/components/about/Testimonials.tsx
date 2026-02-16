@@ -59,7 +59,7 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-lime-400 font-black tracking-[0.3em] text-xs mb-3 uppercase">
+          <h2 className="text-[#E41C38] font-black tracking-[0.3em] text-xs mb-3 uppercase">
             Strength In Numbers
           </h2>
           <h3 className="text-5xl md:text-7xl font-black uppercase italic leading-none text-white">
@@ -94,12 +94,12 @@ export default function Testimonials() {
           {duplicatedTestimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="w-[350px] md:w-[450px] flex-shrink-0 bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md border border-white/10 rounded-2xl p-8 hover:border-lime-400/50 transition-colors duration-500 group"
+              className="w-[350px] md:w-[450px] flex-shrink-0 bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md border border-white/10 rounded-2xl p-8 hover:border-[#E41C38]/50 transition-colors duration-500 group"
             >
               {/* Stars */}
               <div className="flex gap-1 mb-6">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <span key={i} className="text-lime-400 text-lg">
+                  <span key={i} className="text-[#E41C38] text-lg">
                     ★
                   </span>
                 ))}
@@ -112,7 +112,7 @@ export default function Testimonials() {
 
               {/* Author */}
               <div className="flex items-center gap-4 border-t border-white/5 pt-6">
-                <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-lime-400/50 transition-colors">
+                <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-[#E41C38] transition-colors">
                   <Image
                     src={testimonial.image}
                     alt={testimonial.name}
@@ -124,7 +124,7 @@ export default function Testimonials() {
                   <p className="font-bold text-white uppercase tracking-tight">
                     {testimonial.name}
                   </p>
-                  <p className="text-xs text-lime-400/70 uppercase font-black tracking-widest">
+                  <p className="text-xs text-[#E41C38] uppercase font-black tracking-widest">
                     {testimonial.role}
                   </p>
                 </div>

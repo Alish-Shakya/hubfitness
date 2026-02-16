@@ -31,8 +31,8 @@ export default function AdditionalFeatureCard({
       whileHover={{ scale: 1.05 }}
       className="bg-gradient-to-br from-gray-900/60 to-black/80 border border-white/5 rounded-xl p-6 text-center group cursor-pointer"
     >
-      <div className="w-12 h-12 rounded-full bg-lime-400/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-lime-400/20 transition-colors duration-300">
-        <Icon className="w-6 h-6 text-lime-400" strokeWidth={2} />
+      <div className="w-12 h-12 rounded-full bg-[#E41C38]/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-[#E41C38]/20 transition-colors duration-300">
+        <Icon className="w-6 h-6 text-[#E41C38]" strokeWidth={2} />
       </div>
       <h4 className="font-bold text-sm mb-2 uppercase tracking-wide">
         {title}

@@ -10,7 +10,7 @@ export default function ContactInfo() {
       transition={{ duration: 0.8 }}
       className="flex-1"
     >
-      <h2 className="text-lime-400 font-black tracking-[0.3em] text-xs mb-3 uppercase">
+      <h2 className="text-[#E41C38] font-black tracking-[0.3em] text-xs mb-3 uppercase">
         Get In Touch
       </h2>
       <h3 className="text-5xl font-black uppercase italic leading-tight mb-8 text-white">
@@ -30,14 +30,15 @@ export default function ContactInfo() {
 
       <div className="space-y-4 text-gray-300">
         <p>
-          <span className="font-bold text-lime-400">Address:</span> 123 Fitness
+          <span className="font-bold text-[#E41C38]">Address:</span> 123 Fitness
           St, Your City
         </p>
         <p>
-          <span className="font-bold text-lime-400">Phone:</span> +977 1234 5678
+          <span className="font-bold text-[#E41C38]">Phone:</span> +977 1234
+          5678
         </p>
         <p>
-          <span className="font-bold text-lime-400">Email:</span>{" "}
+          <span className="font-bold text-[#E41C38]">Email:</span>{" "}
           info@yourgym.com
         </p>
       </div>

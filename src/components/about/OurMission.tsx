@@ -13,7 +13,7 @@ export default function OurMission() {
           viewport={{ once: true }}
           className="text-5xl font-black uppercase mb-8"
         >
-          Our <span className="text-lime-400">Mission</span>
+          Our <span className="text-[#E41C38]">Mission</span>
         </motion.h2>
         <motion.div
           initial={{ y: 50, opacity: 0 }}

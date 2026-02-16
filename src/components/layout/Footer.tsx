@@ -11,10 +11,30 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Section */}
           <div className="space-y-4">
-            <h3 className="text-2xl font-black uppercase">
-              <span className="text-white">Fit</span>
-              <span className="text-lime-400">Zone</span>
-            </h3>
+            <div className="flex items-center select-none">
+              {/* Logo image as 'H' */}
+              <img
+                src="logo.png"
+                alt="H Logo"
+                className="w-12 h-12 object-contain"
+              />
+
+              {/* UB part */}
+              <span className="-ml-1 text-white font-black uppercase tracking-tight text-2xl font-montserrat">
+                UB
+              </span>
+
+              {/* FITNESS part */}
+              <span
+                className="ml-2 font-extrabold uppercase tracking-widest text-2xl font-montserrat"
+                style={{
+                  WebkitTextStroke: "1px rgba(255,255,255,0.2)",
+                  textShadow: "2px 2px 6px rgba(0,0,0,0.5)",
+                }}
+              >
+                FITNESS
+              </span>
+            </div>
             <p className="text-gray-400 text-sm leading-relaxed">
               Empowering your fitness journey with world-class facilities and
               expert guidance. United by strength, powered by community.
@@ -24,7 +44,7 @@ export default function Footer() {
             <div className="flex gap-4 pt-2">
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-lime-400 flex items-center justify-center transition-all group"
+                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E41C38] flex items-center justify-center transition-all group"
                 aria-label="Facebook"
               >
                 <svg
@@ -38,7 +58,7 @@ export default function Footer() {
 
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-lime-400 flex items-center justify-center transition-all group"
+                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-[#E41C38] flex items-center justify-center transition-all group"
                 aria-label="Instagram"
               >
                 <svg
@@ -63,7 +83,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/"
-                  className="text-gray-400 hover:text-lime-400 transition-colors text-sm"
+                  className="text-gray-400 hover:text-[#E41C38] transition-colors text-sm"
                 >
                   Home
                 </Link>
@@ -71,39 +91,33 @@ export default function Footer() {
               <li>
                 <Link
                   href="/about"
-                  className="text-gray-400 hover:text-lime-400 transition-colors text-sm"
+                  className="text-gray-400 hover:text-[#E41C38] transition-colors text-sm"
                 >
                   About Us
                 </Link>
               </li>
+
               <li>
                 <Link
-                  href="/classes"
-                  className="text-gray-400 hover:text-lime-400 transition-colors text-sm"
+                  href="/membership"
+                  className="text-gray-400 hover:text-[#E41C38] transition-colors text-sm"
                 >
-                  Classes
+                  Membership
                 </Link>
               </li>
+
               <li>
                 <Link
-                  href="/trainers"
-                  className="text-gray-400 hover:text-lime-400 transition-colors text-sm"
+                  href="/resources"
+                  className="text-gray-400 hover:text-[#E41C38] transition-colors text-sm"
                 >
-                  Our Trainers
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/pricing"
-                  className="text-gray-400 hover:text-lime-400 transition-colors text-sm"
-                >
-                  Pricing
+                  Resources
                 </Link>
               </li>
               <li>
                 <Link
                   href="/contact"
-                  className="text-gray-400 hover:text-lime-400 transition-colors text-sm"
+                  className="text-gray-400 hover:text-[#E41C38] transition-colors text-sm"
                 >
                   Contact
                 </Link>
@@ -120,7 +134,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services/personal-training"
-                  className="text-gray-400 hover:text-lime-400 transition-colors text-sm"
+                  className="text-gray-400 hover:text-[#E41C38] transition-colors text-sm"
                 >
                   Personal Training
                 </Link>
@@ -128,7 +142,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services/group-classes"
-                  className="text-gray-400 hover:text-lime-400 transition-colors text-sm"
+                  className="text-gray-400 hover:text-[#E41C38] transition-colors text-sm"
                 >
                   Group Classes
                 </Link>
@@ -136,7 +150,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services/nutrition"
-                  className="text-gray-400 hover:text-lime-400 transition-colors text-sm"
+                  className="text-gray-400 hover:text-[#E41C38] transition-colors text-sm"
                 >
                   Nutrition Coaching
                 </Link>
@@ -144,7 +158,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services/yoga"
-                  className="text-gray-400 hover:text-lime-400 transition-colors text-sm"
+                  className="text-gray-400 hover:text-[#E41C38] transition-colors text-sm"
                 >
                   Yoga & Pilates
                 </Link>
@@ -152,7 +166,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services/spa"
-                  className="text-gray-400 hover:text-lime-400 transition-colors text-sm"
+                  className="text-gray-400 hover:text-[#E41C38] transition-colors text-sm"
                 >
                   Spa & Recovery
                 </Link>
@@ -160,7 +174,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/services/online"
-                  className="text-gray-400 hover:text-lime-400 transition-colors text-sm"
+                  className="text-gray-400 hover:text-[#E41C38] transition-colors text-sm"
                 >
                   Online Training
                 </Link>
@@ -176,7 +190,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <svg
-                  className="w-5 h-5 text-lime-400 mt-0.5 flex-shrink-0"
+                  className="w-5 h-5 text-[#E41C38] mt-0.5 flex-shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -200,7 +214,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <svg
-                  className="w-5 h-5 text-lime-400 mt-0.5 flex-shrink-0"
+                  className="w-5 h-5 text-[#E41C38] mt-0.5 flex-shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -216,7 +230,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <svg
-                  className="w-5 h-5 text-lime-400 mt-0.5 flex-shrink-0"
+                  className="w-5 h-5 text-[#E41C38] mt-0.5 flex-shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -228,11 +242,11 @@ export default function Footer() {
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                <span className="text-gray-400 text-sm">info@fitzone.com</span>
+                <span className="text-gray-400 text-sm">info@fitness.com</span>
               </li>
               <li className="flex items-start gap-3">
                 <svg
-                  className="w-5 h-5 text-lime-400 mt-0.5 flex-shrink-0"
+                  className="w-5 h-5 text-[#E41C38] mt-0.5 flex-shrink-0"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -259,24 +273,24 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">
-              © {currentYear} FitZone. All rights reserved.
+              © {currentYear} Hub Fitness. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Link
                 href="/privacy"
-                className="text-gray-500 hover:text-lime-400 text-sm transition-colors"
+                className="text-gray-500 hover:text-[#E41C38] text-sm transition-colors"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
-                className="text-gray-500 hover:text-lime-400 text-sm transition-colors"
+                className="text-gray-500 hover:text-[#E41C38] text-sm transition-colors"
               >
                 Terms of Service
               </Link>
               <Link
                 href="/cookies"
-                className="text-gray-500 hover:text-lime-400 text-sm transition-colors"
+                className="text-gray-500 hover:text-[#E41C38] text-sm transition-colors"
               >
                 Cookie Policy
               </Link>

@@ -1,24 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
-        primary: "#FF3B30",
-        "primary-hover": "#FF1F1F",
-        "primary-light": "#FF6F61",
-        secondary: "#FF6F00",
-        "secondary-hover": "#FF8C00",
-        "secondary-light": "#FFA040",
-        accent: "#2979FF",
-        "accent-hover": "#448AFF",
-        "accent-light": "#66B2FF",
-        "bg-main": "#121212",
-        "bg-secondary": "#1E1E1E",
-        "bg-tertiary": "#2C2C2C",
-        "text-primary": "#F5F5F5",
-        "text-secondary": "#B0B0B0",
-        "text-accent": "#FF3B30",
+        "royal-red": "#8B0000", // deep royal red
+        firebrick: "#B22222", // optional vivid accent
+        "brand-primary": "#8B0000", // you can alias it
+      },
+
+      fontFamily: {
+        montserrat: ["var(--font-montserrat)"],
       },
     },
   },
+  plugins: [],
 };

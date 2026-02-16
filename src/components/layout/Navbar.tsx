@@ -1,6 +1,6 @@
 "use client";
 
-import { navLinks } from "@/components/data/navLinks";
+import { navLinks } from "@/data/navLinks";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -38,7 +38,30 @@ export default function Navbar() {
           href="/"
           className="text-4xl text-white italic tracking-tighter hover:cursor-pointer"
         >
-          HUB<span className="text-lime-400">FITNESS</span>
+          <div className="flex items-center select-none">
+            {/* Logo image as 'H' */}
+            <img
+              src="logo.png"
+              alt="H Logo"
+              className="w-12 h-12 object-contain"
+            />
+
+            {/* UB part */}
+            <span className="-ml-1 text-white font-black uppercase tracking-tight text-2xl font-montserrat">
+              UB
+            </span>
+
+            {/* FITNESS part */}
+            <span
+              className="ml-2 font-extrabold uppercase tracking-widest text-2xl font-montserrat"
+              style={{
+                WebkitTextStroke: "1px rgba(255,255,255,0.2)",
+                textShadow: "2px 2px 6px rgba(0,0,0,0.5)",
+              }}
+            >
+              FITNESS
+            </span>
+          </div>
         </Link>
 
         {/* LINKS */}
@@ -47,7 +70,7 @@ export default function Navbar() {
             <Link
               key={link.label}
               href={link.href}
-              className="hover:text-lime-400 transition"
+              className="hover:text-[#E41C38] transition"
             >
               {link.label}
             </Link>

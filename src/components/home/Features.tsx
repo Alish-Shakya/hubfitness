@@ -52,7 +52,7 @@ function ScrollCard({
           <motion.span
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            className="text-lime-400 font-black tracking-[0.3em] text-xs mb-3 uppercase"
+            className="text-[#E41C38] font-black tracking-[0.3em] text-xs mb-3 uppercase"
           >
             {card.subtitle}
           </motion.span>
@@ -65,7 +65,7 @@ function ScrollCard({
             </span>
           </h3>
 
-          <p className="text-muted-foreground text-lg md:text-xl max-w-md leading-relaxed border-l-2 border-white/10 pl-6">
+          <p className="text-muted-foreground text-lg md:text-xl max-w-md leading-relaxed border-l-3 border-[#E41C38] pl-6">
             {card.description}
           </p>
         </div>
@@ -77,12 +77,23 @@ function ScrollCard({
             className="relative w-full h-full overflow-hidden rounded-2xl shadow-2xl border border-white/5"
           >
             <motion.div style={{ y: imageY }} className="absolute inset-0">
-              {card.image ? (
+              {/* {card.image ? (
                 <Image
                   src={card.image}
                   alt={card.title}
                   fill
                   className="object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+                />
+              ) : ( */}
+
+              {card.image ? (
+                <video
+                  src={card.image} // now use video path here
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover  transition-all duration-1000"
                 />
               ) : (
                 <div className="w-full h-full bg-zinc-900 flex items-center justify-center font-bold text-zinc-800 text-4xl">
@@ -114,28 +125,28 @@ export default function Features() {
       subtitle: "Build Your Power",
       description:
         "Achieve your fitness goals with our expert-guided weight training programs. We sculpt strength, endurance, and confidence.",
-      image: "/cover.jpg",
+      image: "/heroVideo/redTheme.mp4",
     },
     {
       title: "Power",
       subtitle: "Fun & Fitness",
       description:
         "Join our high-energy group classes like Zumba, Yoga, and HIIT. Fitness is better together, and we make every session exciting.",
-      image: "/cover.jpg",
+      image: "/heroVideo/strong.mp4",
     },
     {
       title: "Discipline",
       subtitle: "Custom Coaching",
       description:
         "Work one-on-one with certified trainers to customize your workout plan. Results are guaranteed when you train with focus.",
-      image: "/cover.jpg",
+      image: "/heroVideo/strong.mp4",
     },
     {
       title: "Success",
       subtitle: "Custom Coaching",
       description:
         "Work one-on-one with certified trainers to customize your workout plan. Results are guaranteed when you train with focus.",
-      image: "/cover.jpg",
+      image: "/heroVideo/strong.mp4",
     },
   ];
 
@@ -158,7 +169,7 @@ export default function Features() {
     <section
       ref={containerRef}
       // style={{ height: sectionHeight }}
-      className="relative h-[400vh] bg-neutral-950"
+      className="relative h-[400vh] bg-black"
     >
       <div className="sticky top-0 h-screen flex items-center overflow-hidden">
         <motion.div
@@ -167,9 +178,9 @@ export default function Features() {
         >
           {/* Enhanced Intro Card */}
           <div className="flex-shrink-0 w-[55vw] md:w-[40vw] h-[70vh] flex flex-col justify-center pr-10">
-            <h2 className="text-4xl sm:text-5xl md:text-8xl font-semibold text-brand-primary leading-[0.9] md:leading-[0.85] tracking-tighter">
-              Strenght <br />
-              <span className="text-lime-400 font-caveat">Power</span> <br />
+            <h2 className="text-4xl sm:text-5xl md:text-8xl font-extrabold font-montserratleading-[0.9] md:leading-[0.85] tracking-tighter">
+              Strength <br />
+              <span className="text-[#E41C38] font-caveat">Power</span> <br />
               Dedication <br />
               Success
             </h2>
@@ -185,15 +196,6 @@ export default function Features() {
             />
           ))}
         </motion.div>
-      </div>
-
-      <div className="absolute bottom-10 left-10 overflow-hidden h-4">
-        <motion.div
-          className="h-full bg-lime-400"
-          style={{
-            width: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]),
-          }}
-        />
       </div>
     </section>
   );

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@tailwind utilities;
 
 @keyframes float1 {
   0% {
@@ -48,13 +49,4 @@
 }
 .bg-blob3 {
   animation: float3 14s ease-in-out infinite;
-}
-
-/* Global Theme Colors */
-:root {
-  --color-bg: #050505;
-  --color-primary: #a3e635; /* lime-400 */
-  --color-secondary: #ffffff;
-  --color-muted: rgba(255, 255, 255, 0.4);
-  --color-dark: #000000;
 }

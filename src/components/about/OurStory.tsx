@@ -17,7 +17,7 @@ export default function OurStory() {
           >
             <div>
               {/* small top label */}
-              <h2 className="text-lime-400 font-black tracking-[0.3em] text-xs mb-3 uppercase">
+              <h2 className="text-[#E41C38] font-black tracking-[0.3em] text-xs mb-3 uppercase">
                 Who We Are
               </h2>
 

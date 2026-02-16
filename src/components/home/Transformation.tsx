@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const testimonials = [
   {
-    images: ["/before.jpg", "/after.jpg"], // Replace with your actual image paths
+    images: ["/hello.jpg", "/hello.jpg"], // Replace with your actual image paths
     text: "This gym has a great atmosphere. Trainers are so friendly and always on hand to give support or advice to their clients whenever they need regarding diet and exercises. Thanks to the HUB FITNESS family for providing us a homely environment.",
     name: "Alish Shakya",
     role: "Student",
@@ -37,7 +37,7 @@ export default function Testimonials() {
   return (
     <section className="relative py-20 bg-gradient-to-b from-[#050505] to-black text-white overflow-hidden">
       {/* Background glow effect */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-lime-400/5 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-[#E41C38]/5 via-transparent to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         {/* Title */}
@@ -49,7 +49,7 @@ export default function Testimonials() {
           className=" mb-16"
         >
           <div>
-            <h2 className="text-lime-400 font-black tracking-[0.3em] text-xs mb-3 uppercase">
+            <h2 className="text-[#E41C38] font-black tracking-[0.3em] text-xs mb-3 uppercase">
               Voices Of Strength
             </h2>
 
@@ -94,9 +94,9 @@ export default function Testimonials() {
 
           {/* Right Side - Text */}
           <div className="w-full lg:w-1/2 text-left lg:text-left">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8 hover:border-lime-400/50 transition-all">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-8 hover:border-[#E41C38] transition-all">
               {/* Quote Icon */}
-              <div className="text-6xl text-lime-400 mb-4 opacity-30">"</div>
+              <div className="text-6xl text-[#E41C38] mb-4 opacity-30">"</div>
 
               {/* Testimonial Text */}
               <p className="text-gray-300 text-lg leading-relaxed mb-6 italic">
@@ -104,8 +104,8 @@ export default function Testimonials() {
               </p>
 
               {/* Author Info */}
-              <div className="border-l-4 border-lime-400 pl-4">
-                <p className="font-black text-xl uppercase text-lime-400 mb-1">
+              <div className="border-l-4 border-[#E41C38] pl-4">
+                <p className="font-black text-xl uppercase text-[#E41C38]mb-1">
                   {testimonials[active].name}
                 </p>
                 <p className="text-sm text-gray-500 uppercase tracking-wider">
@@ -126,8 +126,8 @@ export default function Testimonials() {
               whileTap={{ scale: 0.95 }}
               className={`w-12 h-12 flex items-center justify-center rounded-lg font-bold transition-all ${
                 active === index
-                  ? "bg-lime-400 text-black shadow-[0_0_20px_rgba(163,230,53,0.5)]"
-                  : "bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10 hover:border-lime-400/50"
+                  ? "bg-[#E41C38] text-black shadow-[0_0_20px_rgba(228,28,56,0.5)]"
+                  : "bg-white/5 border border-white/10 text-gray-400 hover:bg-white/10 hover:border-[#E41C38]/50"
               }`}
             >
               {index + 1}
